@@ -8,8 +8,11 @@ export const loginUser = async (user: string, password: string): Promise<void> =
         body: JSON.stringify({ user, password }),
     });
 
-    const { token } = response;
+    const { token, ...userData } = response;
 
+    saveSession(token, userData);
+    
+    console.log("User data:", userData);
     console.log("JWT Token:", token);
-    saveSession(token);
-};
+    
+}

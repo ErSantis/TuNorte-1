@@ -1,12 +1,13 @@
-// Uncomment this line to use CSS modules
-// import styles from './app.module.css';
-import Login from '../pages/Login';
+
+import { RouterProvider } from 'react-router-dom';
+import { router } from '../router/route';
+
 
 
 export function App() {
   return (
     <div>
-     <Login />
+     <RouterProvider router={router} />
     </div>
   );
 }

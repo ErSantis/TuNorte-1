@@ -2,7 +2,7 @@ import "../styles/Login.css";
 import LoginForm from "../components/LoginForm";
 import { useLoginUser } from "../hooks/useLoginUser";
 
-const Login = () => {
+const Login:  React.FC = () => {
   const { mutate: login } = useLoginUser();
 
   const handleLogin = (user: string, password: string) => {
@@ -19,5 +19,4 @@ const Login = () => {
     </div>
   );
 };
-
 export default Login;

@@ -22,7 +22,7 @@ export const fetcher = async (endpoint: string, options: RequestInit = {}) => {
     throw new Error(
       typeof responseBody === "string"
         ? responseBody // Muestra texto si es texto plano
-        : responseBody?.message || "An error occurred"
+        : responseBody?.error|| "An error occurred"
     );
   }
 
