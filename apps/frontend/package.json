@@ -1,0 +1,11 @@
+{
+  "name": "@tu-norte-2/frontend",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "@tanstack/react-query": "^5.71.10"
+  },
+  "devDependencies": {
+    "@tanstack/react-query-devtools": "^5.71.10"
+  }
+}
