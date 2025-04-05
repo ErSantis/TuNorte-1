@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken';
 const cors = require("cors");
 import dotenv from 'dotenv';
 import { AppDataSource } from './db'; // Import the data source
-import { User } from './user'; // Import the User entity
+import { User } from './entities/user'; // Import the User entity
 import bcrypt from 'bcrypt';
 
 dotenv.config();
