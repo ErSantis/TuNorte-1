@@ -1,5 +1,6 @@
 
 import { DataSource } from "typeorm";
+import { User } from "./entities/user";
 
 
 export const AppDataSource = new DataSource({
@@ -11,7 +12,7 @@ export const AppDataSource = new DataSource({
     database: process.env.DB_NAME,
     synchronize: false,
     logging: false,
-    entities: [__dirname + "/entities/*.ts"],
+    entities: [User],
     subscribers: [],
     migrations: [],
 })
