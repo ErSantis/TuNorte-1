@@ -1,35 +1,39 @@
 import { createContext, useState, useEffect, ReactNode } from "react";
 import { getSession, saveSession, clearSession } from "../services/session.service";
 
-import { AuthContextType } from "../types/authcontext.type";
-import { UserSession } from "../types/user.type";
+import { SessionType } from "../types/session.type";
+import { StudentSessionType, StudentType } from "../types/student";
 
-export const AuthContext = createContext<AuthContextType | undefined>(undefined);
+
+export const AuthContext = createContext<SessionType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [token, setToken] = useState<string | null>(null);
-  const [user, setUser] = useState<UserSession | null>(null);
+  const [token, setToken] = useState<string>("");
 
+  const [user, setUser] = useState<Omit<StudentType, "password">>({} as Omit<StudentType, "password">);
   useEffect(() => {
-    const session = getSession();
-    const storedToken = session.token;
-    const storedUser = session.user;
+    console.log("AuthProvider useEffect called");
+    const session: StudentSessionType = getSession();
+    const storedToken = session?.token || null;
+    const storedUser = session?.user || null;
     if (storedToken && storedUser) {
+
       setToken(storedToken);
       setUser(storedUser);
     }
   }, []);
 
-  const login = (newToken: string, newUser: UserSession) => {
-    saveSession(newToken, newUser);
-    setToken(newToken);
-    setUser(newUser);
+  const login = (newUser: StudentSessionType) => {
+
+    saveSession(newUser); // Save the session data to localStorage);
+    setUser(newUser.user);
+    setToken(newUser.token);
   };
 
   const logout = () => {
     clearSession();
-    setToken(null);
-    setUser(null);
+    setToken('');
+    setUser({} as Omit<StudentType, "password">); // Set user to an empty object of the appropriate type
   };
 
   return (

@@ -1,6 +1,6 @@
 
 import { DataSource } from "typeorm";
-import { User } from "./entities/user";
+
 
 
 export const AppDataSource = new DataSource({
@@ -12,11 +12,11 @@ export const AppDataSource = new DataSource({
     database: process.env.DB_NAME,
     synchronize: false,
     logging: false,
-    entities: [User],
+    entities: [__dirname + "/entities/*.{ts,js}"],
     subscribers: [],
     migrations: [],
 })
 
-// Initialize the data source
+// Initialize the data source e imprimir nombre de entidades
 AppDataSource.initialize()
 

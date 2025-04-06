@@ -5,8 +5,8 @@ import { useLoginUser } from "../hooks/useLoginUser";
 const Login:  React.FC = () => {
   const { mutate: login } = useLoginUser();
 
-  const handleLogin = (user: string, password: string) => {
-    login({ user, password });
+  const handleLogin = (username: string, password: string) => {
+    login({ username, password });
   };
 
   return (
