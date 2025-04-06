@@ -1,10 +1,10 @@
 
-import { UserSession } from "../types/user.type";
+import { StudentSessionType} from "../types/student";
 
 const SESSION_KEY = "auth_session";
 
-export const saveSession = (token: string, user: UserSession) => {
-    const sessionData = JSON.stringify({ token, user });
+export const saveSession = (user: StudentSessionType) => {
+    const sessionData = JSON.stringify({ user });
     localStorage.setItem(SESSION_KEY, sessionData);
 };
 

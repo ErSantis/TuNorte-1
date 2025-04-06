@@ -1,18 +1,12 @@
+import { StudentSessionType } from "../types/student";
 import { fetcher } from "./api.service";
-import { saveSession } from "./session.service";
 
-export const loginUser = async (user: string, password: string): Promise<void> => {
-    console.log("Login attempt:", { user, password });
+
+export const loginUser = async (username: string, password: string): Promise<StudentSessionType> => {
     const response = await fetcher("/auth/login", {
         method: "POST",
-        body: JSON.stringify({ user, password }),
+        body: JSON.stringify({ username, password }),
     });
-
-    const { token, ...userData } = response;
-
-    saveSession(token, userData);
-    
-    console.log("User data:", userData);
-    console.log("JWT Token:", token);
-    
+    console.log("loginUser response", response);
+    return response;
 }
