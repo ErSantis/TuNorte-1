@@ -5,6 +5,7 @@ const cors = require("cors");
 import dotenv from 'dotenv';
 
 import { LoginUser } from "./controllers/user.controller";
+import { studentCourses } from "./controllers/subject.controller";
 
 dotenv.config();
 // Cargar variables de entorno desde el archivo .env
@@ -32,7 +33,11 @@ app.get('/', (req, res) => {
   res.send({ message: 'Hello API' });
 });
 
+
 app.post('/auth/login', LoginUser);
+
+
+app.get('/courses/users/:idStudent', studentCourses);
 
 app.listen(port, host, () => {
   console.log(`[ ready ] http://${host}:${port}`);
