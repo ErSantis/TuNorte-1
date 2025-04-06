@@ -7,6 +7,6 @@
     "tsBuildInfoFile": "dist/tsconfig.app.tsbuildinfo",
     "emitDecoratorMetadata": true
   },
-  "include": ["src/**/*.ts", "src/entities/user.ts"],
+  "include": ["src/**/*.ts", "src/entities/Students.ts"],
   "exclude": ["eslint.config.js", "eslint.config.cjs", "eslint.config.mjs"]
 }
