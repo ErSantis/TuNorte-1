@@ -47,3 +47,5 @@ vitest.config.*.timestamp*
 apps/backend/.env
 
 docker-compose.yml
+
+index.html
