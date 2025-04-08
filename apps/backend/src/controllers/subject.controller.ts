@@ -2,7 +2,7 @@
 import { Request, Response } from "express";
 import { getCoursesByStudentId } from "../services/subject.service";
 
-export const studentCourses = async (req: Request, res: Response) => {
+export const getstudentCourses = async (req: Request, res: Response) => {
   const { idStudent } = req.params;
   
   if (!idStudent) {
