@@ -7,6 +7,8 @@ import dotenv from 'dotenv';
 import { LoginUser } from "./controllers/user.controller";
 import { studentCourses } from "./controllers/subject.controller";
 
+import { getCourse } from "./controllers/course.controller";
+
 dotenv.config();
 // Cargar variables de entorno desde el archivo .env
 
@@ -38,6 +40,8 @@ app.post('/auth/login', LoginUser);
 
 
 app.get('/courses/users/:idStudent', studentCourses);
+
+app.get('/subjects', getCourse);
 
 app.listen(port, host, () => {
   console.log(`[ ready ] http://${host}:${port}`);
