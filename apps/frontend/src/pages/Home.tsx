@@ -9,13 +9,13 @@ export const Home = () => {
   const { data, isLoading, error } = useGetSubjects(user.idstudent);
 
   if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error loading additional data</div>;
+  if (error || !data) return <div>Error loading  subjects</div>;
 
   return (
     <>
       <Navbar user={user} logout={logout} />
       <div className="container mt-4">
-        <SubjectList data={data!} />
+        <SubjectList data={data} />
       </div>
     </>
   );
