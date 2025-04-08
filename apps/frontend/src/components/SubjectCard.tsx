@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 export const SubjectCard = ({ subject }: { subject: { Name: string; idDept: string; NRC: string } }) => {
   return (
     <div className="col mb-4" key={subject.NRC}>
-      <Link to={`/subject/${subject.NRC}`} className="card-link">
+      <Link to={`/subjects?NRC=${subject.NRC}`} className="card-link">
         <div className="card hover-animation" id={`miDiv_${subject.Name}`}>
           <div className="card__image-holder">
             <img

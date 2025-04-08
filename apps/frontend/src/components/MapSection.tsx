@@ -1,4 +1,6 @@
-export const MapSection = ({ locations }: { locations: any[] }) => {
+import { CourseLocationType } from "../types/course.type";
+
+export const MapSection = ({ locations }: { locations: CourseLocationType[] }) => {
   return (
     <section className="et-slide" id="tab-map">
       <h1>Mapa</h1>
@@ -7,8 +9,8 @@ export const MapSection = ({ locations }: { locations: any[] }) => {
         <label htmlFor="markerPosition" className="labelfor">Selecciona la posición del marcador:</label>
         <select id="markerPosition" className="custom-select" name="markerPosition">
           {locations.map((location, index) => (
-            <option key={index} value={`${location.Latitude}, ${location.Longitude}`}>
-              {location.Name}
+            <option key={index} value={`${location.latitude}, ${location.longitude}`}>
+              {location.name}
             </option>
           ))}
         </select>
