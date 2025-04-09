@@ -35,7 +35,7 @@ export const CoursePage = () => {
          <ScheduleSection schedules={data.schedules} />
         <TasksSection tasks={data.tasks} />
         <MapSection locations={data.schedules.map(schedule => schedule.location)} />
-      </main> *
+      </main>
     </>
   );
 };
