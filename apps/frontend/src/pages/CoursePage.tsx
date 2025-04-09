@@ -1,8 +1,8 @@
-import { Hero } from '../components/course/Hero';
-import { InformationSection } from '../components/course/InformationSection';
-import { ScheduleSection } from '../components/course/ScheduleSection';
-import { TasksSection } from '../components/course/TasksSection';
-import { MapSection } from '../components/course/MapSection';
+import { Hero } from '../components/course/navbar/Hero';
+import { InformationSection } from '../components/course/info/InformationSection';
+import { ScheduleSection } from '../components/course/schedules/ScheduleSection';
+import { TasksSection } from '../components/course/tasks/TasksSection';
+import { MapSection } from '../components/course/map/MapSection';
 import { useGetCourse } from '../hooks/useGetCourse';
 
 import '../styles/CoursePage.css';

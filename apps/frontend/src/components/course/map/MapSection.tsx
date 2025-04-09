@@ -8,7 +8,7 @@ import {
 import MapIcon from '@mui/icons-material/Map';
 import { MapDisplay } from './MapDisplay';
 import { LocationSelector } from './LocationSelector';
-import { MapSectionProps } from '../../types/map.types';
+import { MapSectionProps } from '../../../types/map.types';
 
 // Coordenadas de Barranquilla, Colombia
 const BARRANQUILLA_COORDS: [number, number] = [11.019234,-74.851189];

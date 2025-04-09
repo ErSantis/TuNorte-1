@@ -13,8 +13,8 @@ import {
 } from '@mui/material';
 import EmailIcon from '@mui/icons-material/Email';
 import SchoolIcon from '@mui/icons-material/School';
-import { CourseInfoType } from "../../types/course.type";
-import { ProfessorType } from "../../types/professor.type";
+import { CourseInfoType } from "../../../types/course.type";
+import { ProfessorType } from "../../../types/professor.type";
 
 export const InformationSection = React.memo(({ info }: { info: CourseInfoType }) => {
   return (

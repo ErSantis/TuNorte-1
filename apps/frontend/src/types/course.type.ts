@@ -18,8 +18,8 @@ export type CourseTaskType = {
 
 export type CourseLocationType = {
     name: string;
-    latitude: string;
-    longitude: string;
+    latitude: number;
+    longitude: number;
 };
 
 export type CourseScheduleType = {

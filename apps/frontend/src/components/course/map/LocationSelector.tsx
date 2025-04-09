@@ -10,10 +10,10 @@ import {
   SelectChangeEvent
 } from '@mui/material';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import { Location } from '../../types/map.types';
+import { CourseLocationType } from '../../../types/course.type';
 
 interface LocationSelectorProps {
-  locations: Location[];
+  locations: CourseLocationType[];
   selectedLocation: string;
   onLocationChange: (location: string) => void;
   onUpdateMarker: () => void;

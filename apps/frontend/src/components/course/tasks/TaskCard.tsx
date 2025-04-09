@@ -12,7 +12,7 @@ import {
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import { CourseTaskType } from '../../types/course.type';
+import { CourseTaskType } from '../../../types/course.type';
 
 interface TaskCardProps {
   task: CourseTaskType;

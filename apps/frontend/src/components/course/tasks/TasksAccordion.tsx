@@ -3,7 +3,7 @@ import {
   Grid, 
   Typography 
 } from '@mui/material';
-import { CourseTaskType } from '../../types/course.type';
+import { CourseTaskType } from '../../../types/course.type';
 import { TaskCard } from './TaskCard';
 
 interface TaskAccordionProps {
