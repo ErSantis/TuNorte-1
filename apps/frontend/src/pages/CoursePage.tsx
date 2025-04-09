@@ -2,7 +2,7 @@ import { Hero } from '../components/course/Hero';
 import { InformationSection } from '../components/course/InformationSection';
 import { ScheduleSection } from '../components/course/ScheduleSection';
 import { TasksSection } from '../components/course/TasksSection';
-// import { MapSection } from '../components/course/MapSection';
+import { MapSection } from '../components/course/MapSection';
 import { useGetCourse } from '../hooks/useGetCourse';
 
 import '../styles/CoursePage.css';
@@ -34,7 +34,7 @@ export const CoursePage = () => {
         <InformationSection info={data.info} />
          <ScheduleSection schedules={data.schedules} />
         <TasksSection tasks={data.tasks} />
-        {/*<MapSection locations={data.schedules.map(schedule => schedule.location)} /> */}
+        <MapSection locations={data.schedules.map(schedule => schedule.location)} />
       </main> *
     </>
   );
