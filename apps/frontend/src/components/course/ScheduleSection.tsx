@@ -1,6 +1,7 @@
+import React from 'react';
 import { CourseScheduleType } from "../types/course.type";
 
-export const ScheduleSection = ({ schedules }: { schedules: CourseScheduleType[] }) => {
+export const ScheduleSection = React.memo(({ schedules }: { schedules: CourseScheduleType[] }) => {
   return (
     <section className="et-slide" id="tab-schedule">
       <h1>Horarios</h1>
@@ -13,4 +14,4 @@ export const ScheduleSection = ({ schedules }: { schedules: CourseScheduleType[]
       ))}
     </section>
   );
-};
+});

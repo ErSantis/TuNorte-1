@@ -1,6 +1,11 @@
+import React, { useCallback } from 'react';
 import { CourseLocationType } from "../types/course.type";
 
-export const MapSection = ({ locations }: { locations: CourseLocationType[] }) => {
+export const MapSection = React.memo(({ locations }: { locations: CourseLocationType[] }) => {
+  const handleUpdateMarker = useCallback(() => {
+    console.log("Actualizar Marcador");
+  }, []);
+
   return (
     <section className="et-slide" id="tab-map">
       <h1>Mapa</h1>
@@ -14,7 +19,7 @@ export const MapSection = ({ locations }: { locations: CourseLocationType[] }) =
             </option>
           ))}
         </select>
-        <button type="button" className="btn btn-outline-primary" onClick={() => console.log("Actualizar Marcador")}>
+        <button type="button" className="btn btn-outline-primary" onClick={handleUpdateMarker}>
           Actualizar Marcador
         </button>
       </form>
@@ -22,4 +27,4 @@ export const MapSection = ({ locations }: { locations: CourseLocationType[] }) =
       <div id="map"></div>
     </section>
   );
-};
+});

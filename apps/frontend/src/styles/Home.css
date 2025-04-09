@@ -142,10 +142,3 @@ div.card:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease-out;
 }
-
-@media (max-width: 767px) {
-    div.col-md-3 {
-        flex: 0 0 50%;
-        max-width: 50%;
-    }
-}

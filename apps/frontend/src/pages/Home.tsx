@@ -1,7 +1,7 @@
 import { useAuth } from '../hooks/useAuth';
 import { useGetSubjects } from "../hooks/useGetSubjects";
-import { Navbar } from '../components/Navbar';
-import { SubjectList } from '../components/SubjectList';
+import { Navbar } from '../components/course/Navbar';
+import { SubjectList } from '../components/home/SubjectList';
 import '../styles/Home.css';
 
 export const Home = () => {

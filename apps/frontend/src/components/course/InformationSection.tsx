@@ -1,7 +1,8 @@
+import React from 'react';
 import { CourseInfoType } from "../types/course.type";
 import { ProfessorType } from "../types/professor.type";
 
-export const InformationSection = ({ info }: { info: CourseInfoType }) => {
+export const InformationSection = React.memo(({ info }: { info: CourseInfoType }) => {
   return (
     <section className="et-slide" id="tab-information">
       <h1>Informacion</h1>
@@ -16,4 +17,4 @@ export const InformationSection = ({ info }: { info: CourseInfoType }) => {
       <h3>Departamento : {info.nameDept}</h3>
     </section>
   );
-};
+});

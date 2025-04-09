@@ -1,5 +1,5 @@
 import "../styles/Login.css";
-import LoginForm from "../components/LoginForm";
+import LoginForm from "../components/login/LoginForm";
 import { useLoginUser } from "../hooks/useLoginUser";
 
 const Login:  React.FC = () => {
@@ -10,7 +10,6 @@ const Login:  React.FC = () => {
   };
 
   return (
-    // Fondo
     <div className="wrapper">
       <div className="formContent">
         <h2 className="active">Sign In</h2>
