@@ -1,11 +1,9 @@
-import "reflect-metadata"
+import "reflect-metadata";
 
 import express from 'express';
 const cors = require("cors");
 import dotenv from 'dotenv';
-
-import { LoginUser } from "./controllers/user.controller";
-import { studentCourses } from "./controllers/subject.controller";
+import router from './routes'; // Importar las rutas
 
 dotenv.config();
 // Cargar variables de entorno desde el archivo .env
@@ -19,7 +17,6 @@ app.use(express.json());
 
 app.use(cors());
 
-
 // También puedes configurarlo de forma específica:
 app.use(
   cors({
@@ -29,15 +26,7 @@ app.use(
   })
 );
 
-app.get('/', (req, res) => {
-  res.send({ message: 'Hello API' });
-});
-
-
-app.post('/auth/login', LoginUser);
-
-
-app.get('/courses/users/:idStudent', studentCourses);
+app.use(router); // Usar las rutas importadas
 
 app.listen(port, host, () => {
   console.log(`[ ready ] http://${host}:${port}`);

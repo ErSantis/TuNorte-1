@@ -30,4 +30,6 @@ export class Course {
 
   @OneToMany(() => CourseProf, (cp) => cp.course)
   courseprofs!: CourseProf[];
+
+  
 }
