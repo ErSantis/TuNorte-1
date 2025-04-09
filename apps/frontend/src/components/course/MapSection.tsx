@@ -1,87 +1,88 @@
-import React, { useCallback } from 'react';
+// src/components/Map/MapSection.tsx
+import React, { useState, useEffect } from 'react';
 import { 
-  Box,
-  Typography,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-  Button,
-  Paper,
-  SelectChangeEvent
+  Box, 
+  Typography, 
+  Paper
 } from '@mui/material';
-import { CourseLocationType } from "../../types/course.type";
+import MapIcon from '@mui/icons-material/Map';
+import { MapDisplay } from './MapDisplay';
+import { LocationSelector } from './LocationSelector';
+import { MapSectionProps } from '../../types/map.types';
 
-export const MapSection = React.memo(({ locations }: { locations: CourseLocationType[] }) => {
-  const handleUpdateMarker = useCallback(() => {
-    console.log("Actualizar Marcador");
-  }, []);
+// Coordenadas de Barranquilla, Colombia
+const BARRANQUILLA_COORDS: [number, number] = [11.019234,-74.851189];
+
+
+export const MapSection: React.FC<MapSectionProps> = ({ locations }) => {
+  const [selectedLocation, setSelectedLocation] = useState<string>('');
+  const [mapCenter, setMapCenter] = useState<[number, number]>(BARRANQUILLA_COORDS);
+  const [zoom] = useState<number>(18); // Zoom ajustado para la universidad
+
+  useEffect(() => {
+    // Si la lista está vacía, agregamos una ubicación por defecto la ubicacion de la universidad
+    if (locations.length === 0) {
+      
+      // Establecemos la ubicación por defecto
+      setSelectedLocation(`${BARRANQUILLA_COORDS[0]}, ${BARRANQUILLA_COORDS[1]}`);
+      setMapCenter(BARRANQUILLA_COORDS);
+    } else {
+      // Set default location if available
+      const defaultLocation = `${locations[0].latitude}, ${locations[0].longitude}`;
+      setSelectedLocation(defaultLocation);
+      setMapCenter([locations[0].latitude, locations[0].longitude]);
+    }
+  }, [locations]);
+
+  const handleLocationChange = (locationValue: string) => {
+    setSelectedLocation(locationValue);
+  };
+
+  const handleUpdateMarker = () => {
+    if (selectedLocation) {
+      const [lat, lng] = selectedLocation.split(',').map(coord => parseFloat(coord.trim()));
+      setMapCenter([lat, lng]);
+    }
+  };
 
   return (
     <Box 
       component="section" 
-      id="tab-map"
-      sx={{
-        padding: 3,
-        '& > *': { mb: 3 }  // margin bottom para todos los hijos directos
+      id="tab-map" 
+      sx={{ 
+        py: 4, 
+        px: 2,
+        maxWidth: 1200,
+        mx: 'auto'
       }}
     >
-      <Typography variant="h4" component="h1">
-        Mapa
+      <Typography variant="h4" component="h1" gutterBottom sx={{ mb: 3, fontWeight: 'bold', display: 'flex', alignItems: 'center' }}>
+        <MapIcon sx={{ mr: 1 }} /> Mapa
       </Typography>
-
+      
+      <Paper elevation={2} sx={{ p: 3, mb: 3 }}>
+        <LocationSelector 
+          locations={locations}
+          selectedLocation={selectedLocation}
+          onLocationChange={handleLocationChange}
+          onUpdateMarker={handleUpdateMarker}
+        />
+      </Paper>
+      
       <Paper 
-        component="form" 
-        id="markerForm"
-        sx={{
-          p: 3,
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 2
+        elevation={3} 
+        sx={{ 
+          width: '100%', 
+          height: '500px',
+          overflow: 'hidden'
         }}
       >
-        <FormControl fullWidth>
-          <InputLabel id="marker-position-label">
-            Selecciona la posición del marcador
-          </InputLabel>
-          <Select
-            labelId="marker-position-label"
-            id="markerPosition"
-            label="Selecciona la posición del marcador"
-            defaultValue=""
-          >
-            {locations.map((location, index) => (
-              <MenuItem 
-                key={index} 
-                value={`${location.latitude}, ${location.longitude}`}
-              >
-                {location.name}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-
-        <Button 
-          variant="outlined" 
-          color="primary"
-          onClick={handleUpdateMarker}
-          sx={{ alignSelf: 'flex-start' }}
-        >
-          Actualizar Marcador
-        </Button>
+        <MapDisplay 
+          center={mapCenter} 
+          zoom={zoom} 
+          locations={locations} 
+        />
       </Paper>
-
-      <Box 
-        id="map"
-        sx={{
-          width: '100%',
-          height: '400px', // Ajusta según necesites
-          bgcolor: 'grey.200' // Color temporal para visualizar el área del mapa
-        }}
-      />
     </Box>
   );
-});
-
-// Si quieres mantener el nombre del componente en las DevTools
-MapSection.displayName = 'MapSection';
+};
