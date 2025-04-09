@@ -11,11 +11,10 @@ import {
   ListItemIcon,
   Paper,
   Grid,
-  Chip
 } from '@mui/material';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import DateRangeIcon from '@mui/icons-material/DateRange';
-import { CourseScheduleType } from "../../types/course.type";
+import { CourseScheduleType } from "../../../types/course.type";
 
 export const ScheduleSection = React.memo(({ schedules }: { schedules: CourseScheduleType[] }) => {
   // Helper function to group schedules by day

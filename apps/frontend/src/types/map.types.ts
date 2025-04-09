@@ -1,11 +1,7 @@
-export interface Location {
-  name: string;
-  latitude: number;
-  longitude: number;
-}
+import { CourseLocationType } from "./course.type";
 
 export interface MapSectionProps {
-  locations: Location[];
+  locations: CourseLocationType[];
 }
 
 export interface ChangeMapViewProps {
@@ -15,5 +11,5 @@ export interface ChangeMapViewProps {
 export interface MapDisplayProps {
   center: [number, number];
   zoom: number;
-  locations: Location[];
+  locations: CourseLocationType[];
 }

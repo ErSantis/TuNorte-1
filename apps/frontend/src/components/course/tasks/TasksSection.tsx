@@ -1,14 +1,14 @@
 import React from 'react';
-import { 
-  Box, 
-  Typography, 
+import {
+  Box,
+  Typography,
   Accordion,
   AccordionSummary,
-  AccordionDetails 
+  AccordionDetails
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { CourseTaskType } from '../../types/course.type';
-import { TaskAccordion } from '../../components/course/TasksAccordion';
+import { CourseTaskType } from '../../../types/course.type';
+import { TaskAccordion } from './TasksAccordion';
 
 interface TasksSectionProps {
   tasks: CourseTaskType[];
@@ -19,11 +19,11 @@ const TasksSection: React.FC<TasksSectionProps> = ({ tasks }) => {
   const completedTasks = tasks.filter((t) => !t.status);
 
   return (
-    <Box 
-      component="section" 
-      id="tab-tasks" 
-      sx={{ 
-        py: 4, 
+    <Box
+      component="section"
+      id="tab-tasks"
+      sx={{
+        py: 4,
         px: 2,
         maxWidth: 1200,
         mx: 'auto'
@@ -35,11 +35,11 @@ const TasksSection: React.FC<TasksSectionProps> = ({ tasks }) => {
 
       <Box sx={{ mt: 2 }}>
         <Accordion defaultExpanded>
-          <AccordionSummary 
+          <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1-content"
             id="panel1-header"
-            sx={{ 
+            sx={{
               bgcolor: 'primary.light',
               color: 'primary.contrastText',
               '&.Mui-expanded': {
@@ -50,19 +50,19 @@ const TasksSection: React.FC<TasksSectionProps> = ({ tasks }) => {
             <Typography variant="h6">Pendientes</Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <TaskAccordion 
-              tasks={pendingTasks} 
-              emptyMessage="No hay tareas pendientes." 
+            <TaskAccordion
+              tasks={pendingTasks}
+              emptyMessage="No hay tareas pendientes."
             />
           </AccordionDetails>
         </Accordion>
 
         <Accordion>
-          <AccordionSummary 
+          <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel2-content"
             id="panel2-header"
-            sx={{ 
+            sx={{
               bgcolor: 'success.light',
               color: 'success.contrastText',
               '&.Mui-expanded': {
@@ -73,9 +73,9 @@ const TasksSection: React.FC<TasksSectionProps> = ({ tasks }) => {
             <Typography variant="h6">Finalizadas</Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <TaskAccordion 
-              tasks={completedTasks} 
-              emptyMessage="No hay tareas finalizadas." 
+            <TaskAccordion
+              tasks={completedTasks}
+              emptyMessage="No hay tareas finalizadas."
             />
           </AccordionDetails>
         </Accordion>

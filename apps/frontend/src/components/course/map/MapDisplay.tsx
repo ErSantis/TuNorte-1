@@ -2,9 +2,9 @@
 import React, { useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
-import { ChangeMapViewProps, MapDisplayProps } from '../../types/map.types';
+import { ChangeMapViewProps, MapDisplayProps } from '../../../types/map.types';
 import 'leaflet/dist/leaflet.css';
-import { getLocationName } from '../../utils/map/getLocationName';
+import { getLocationName } from '../../../utils/map/getLocationName';
 
 // Define ubicación por defecto para Barranquilla, Colombia
 const BARRANQUILLA_COORDS: [number, number] = [11.01370, -74.85131];
