@@ -29,10 +29,7 @@ export const getCourseDetail = async (nrc: string) => {
         relations: { professor: true },
     });
 
-    const allProfessors = [
-        course.professor,
-        ...courseProfs.map(cp => cp.professor),
-    ];
+    const allProfessors = courseProfs.map(cp => cp.professor);
 
     const result = {
         info: {
@@ -41,7 +38,8 @@ export const getCourseDetail = async (nrc: string) => {
             nameDept: course.subject.department.namedept,
             professors: allProfessors.map(p => ({
                 idProfessor: p.idprofessor,
-                name: p.name,
+                firstname: p.firstname,
+                middlename: p.middlename,
                 lastname: p.lastname,
                 email: p.email,
             })),
