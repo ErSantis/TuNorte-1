@@ -14,6 +14,7 @@ import {
 } from '@mui/material';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import DateRangeIcon from '@mui/icons-material/DateRange';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import { CourseScheduleType } from "../../../types/course.type";
 
 export const ScheduleSection = React.memo(({ schedules }: { schedules: CourseScheduleType[] }) => {
@@ -45,7 +46,8 @@ export const ScheduleSection = React.memo(({ schedules }: { schedules: CourseSch
       }}
     >
       <Typography variant="h4" component="h1" gutterBottom sx={{ mb: 3, fontWeight: 'bold' }}>
-        Horarios
+        
+        <CalendarMonthIcon sx={{ mr: 1 }}/>Horarios
       </Typography>
       
       <Grid container spacing={3}>
