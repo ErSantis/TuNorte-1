@@ -9,7 +9,7 @@ export class Professor {
   idprofessor!: number;
 
   @Column({ type: 'varchar', length: 30 })
-  name!: string;
+  firstname!: string;
 
   @Column({ type: 'varchar', length: 30 })
   middlename!: string;

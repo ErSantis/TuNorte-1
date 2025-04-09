@@ -1,0 +1,59 @@
+/* styles/TaskAccordion.css */
+.accordion-item {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+  overflow: hidden;
+}
+
+.accordion-header {
+  width: 100%;
+}
+
+.accordion-trigger {
+  all: unset;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 14px 20px;
+  font-weight: bold;
+  font-size: 16px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.accordion-icon {
+  font-size: 20px;
+}
+
+.accordion-content {
+  padding: 16px;
+  background-color: #fafafa;
+  animation: slideDown 300ms ease;
+}
+
+@keyframes slideDown {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.task-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: flex-start;
+  padding: 1rem;
+}
+
+.empty-message {
+  font-style: italic;
+  color: #666;
+}

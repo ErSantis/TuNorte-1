@@ -1,23 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 
 interface LoginFormProps {
   onSubmit: (idStudent: string, password: string) => void;
 }
 
-const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
+const LoginForm: React.FC<LoginFormProps> = React.memo(({ onSubmit }) => {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!user || !password) {
-      setMessage("Both fields are required");
-      return;
-    }
-    setMessage("");
-    onSubmit(user, password);
-  };
+  const handleSubmit = useCallback(
+    (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      if (!user || !password) {
+        setMessage("Both fields are required");
+        return;
+      }
+      setMessage("");
+      onSubmit(user, password);
+    },
+    [user, password, onSubmit]
+  );
 
   return (
     <form onSubmit={handleSubmit}>
@@ -43,6 +46,6 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
       <button type="submit" className="fadeIn fourth">Log In</button>
     </form>
   );
-};
+});
 
 export default LoginForm;
