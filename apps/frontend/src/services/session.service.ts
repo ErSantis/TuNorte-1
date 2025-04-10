@@ -10,7 +10,9 @@ export const saveSession = (session: StudentSessionType) => {
 
 export const getSession = () => {
     const sessionData = localStorage.getItem(SESSION_KEY);
-    console.log("Sesión recuperada:", sessionData ? JSON.parse(sessionData) : null);
+    if (process.env.NODE_ENV !== "production") {
+        console.log("Sesión recuperada:", sessionData ? JSON.parse(sessionData) : null);
+    }
     return sessionData ? JSON.parse(sessionData) : null;
 };
 

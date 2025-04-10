@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     const session: StudentSessionType = getSession()
-    console.log("Sesión recuperada:", session);;
+    console.log("Sesión recuperada:", session);
     const storedToken = session?.token || null;
     const storedUser = session?.user || null;
     if (storedToken && storedUser) {
@@ -31,11 +31,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   
 
 
-  const login = (Session: StudentSessionType) => {
+  const login = (session: StudentSessionType) => {
 
-    saveSession(Session); // Save the session data to localStorage);
-    setUser(Session.user);
-    setToken(Session.token);
+    saveSession(session); // Save the session data to localStorage);
+    setUser(session.user);
+    setToken(session.token);
     setIsAuthenticated(true); // Set authenticated state
   };
 
