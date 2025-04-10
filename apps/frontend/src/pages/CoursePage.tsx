@@ -34,7 +34,7 @@ export const CoursePage = () => {
           <ScheduleSection schedules={data.schedules} />
         </section>
         <section id="tab-tasks">
-          <TasksSection tasks={data.tasks} refecth={refetch} />
+          <TasksSection tasks={data.tasks} refetch={refetch} />
         </section>
         <section id="tab-map">
           <MapSection locations={data.schedules.map(schedule => schedule.location)} />

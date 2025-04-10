@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Box,
   Typography,
@@ -17,6 +17,11 @@ interface TasksSectionProps {
 }
 
 const TasksSection: React.FC<TasksSectionProps> = ({ tasks, refetch }) => {
+  
+  useEffect(() => {
+    refetch(); // Asegúrate de que las tareas se actualicen al montar el componente
+  }, [tasks, refetch]); // Escucha cambios en las tareas
+
   const pendingTasks = tasks.filter((t) => t.status); // Pending tasks
   const completedTasks = tasks.filter((t) => !t.status); // Completed tasks
 

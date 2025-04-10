@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Card,
   CardHeader,
@@ -28,8 +28,10 @@ interface TaskCardProps {
 const TaskCard: React.FC<TaskCardProps> = React.memo(({ task, refetch }) => {
   const { title, description, enddate, status } = task;
 
+
   const { mutate: changeStatusTask } = useChangeStatusMutation(task.idtask, () => {
     refetch?.();
+     // alternar el estado local
   });
 
   const { mutate: deleteTask } = useDeleteTaskMutation(task.idtask, () => {
@@ -49,7 +51,8 @@ const TaskCard: React.FC<TaskCardProps> = React.memo(({ task, refetch }) => {
   };
 
   const handleChageStatusTask = () => {
-    changeStatusTask();
+    changeStatusTask(); // Cambia el estado de la tarea
+    refetch?.(); // Refresca la lista de tareas para actualizar la UI
   };
 
   return (
@@ -60,7 +63,8 @@ const TaskCard: React.FC<TaskCardProps> = React.memo(({ task, refetch }) => {
         display: 'flex',
         flexDirection: 'column',
         bgcolor: status ? 'rgba(76, 175, 80, 0.08)' : 'grey.100',
-        borderLeft: status ? '4px solid #4caf50' : '4px solid #9e9e9e'
+        borderLeft: status ? '4px solid #4caf50' : '4px solid #9e9e9e',
+        maxWidth: !status ? '300px' : 'none' // Reduce width for pending tasks
       }}
     >
       <CardHeader
