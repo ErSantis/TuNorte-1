@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     const session: StudentSessionType = getSession()
-    console.log("Sesión recuperada:", session);;
+    console.log("Sesión recuperada:", session);
     const storedToken = session?.token || null;
     const storedUser = session?.user || null;
     if (storedToken && storedUser) {
