@@ -60,7 +60,7 @@ export const MapSection: React.FC<MapSectionProps> = ({ locations }) => {
         <MapIcon sx={{ mr: 1 }} /> Mapa
       </Typography>
       
-      <Paper elevation={2} sx={{ p: 3, mb: 3 }}>
+      <Paper elevation={2} sx={{ p: 3, mb: 3, mx: 'auto', width: '80%' }}>
         <LocationSelector 
           locations={locations}
           selectedLocation={selectedLocation}
@@ -72,9 +72,10 @@ export const MapSection: React.FC<MapSectionProps> = ({ locations }) => {
       <Paper 
         elevation={3} 
         sx={{ 
-          width: '100%', 
+          width: '80%', 
           height: '500px',
-          overflow: 'hidden'
+          overflow: 'hidden',
+          mx: 'auto' // Centrar horizontalmente
         }}
       >
         <MapDisplay 
