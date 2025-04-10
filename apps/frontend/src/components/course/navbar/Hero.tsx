@@ -24,7 +24,9 @@ export const Hero = ({ name }: HeroProps) => {
   const handleClick = (id: string) => {
     const section = document.getElementById(id);
     if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
+      const offset = 80; // Adjust this value to match the height of your AppBar or desired offset
+      const top = section.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
     }
   };
 
