@@ -5,8 +5,6 @@ import { PrivateRoute } from "../components/ProtectedRoute";
 import { CoursePage } from "../pages/CoursePage";
 
 
-
-
 export const router = createBrowserRouter(
   [
     {
