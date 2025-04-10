@@ -13,7 +13,7 @@ export type CourseTaskType = {
     title: string;
     description: string;
     enddate: string;
-    status: number;
+    status: boolean;
 };
 
 export type CourseLocationType = {
