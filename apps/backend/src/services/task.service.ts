@@ -11,7 +11,7 @@ export const completeTaskByid = async (taskId: number): Promise<any> => {
         throw new Error(`Task with ID ${taskId} not found.`);
     }
 
-    task.status = true;
+    task.status = !task.status; 
 
     await taskRepository.save(task);
 

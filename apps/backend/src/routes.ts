@@ -16,7 +16,7 @@ router.get('/courses/users/:idStudent', getstudentCourses);
 
 router.get('/subjects', getCourse);
 
-router.put('/tasks/:idtask/complete', completeTask);
+router.put('/tasks/:idtask/status', completeTask);
 
 //Eliminar
 router.delete('/tasks/:idtask', deleteTask);

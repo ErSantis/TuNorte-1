@@ -1,7 +1,7 @@
 import { fetcher } from "./api.service";
 
-export const completeTasks = async (idtask: number): Promise<any> => {
-    const response = await fetcher(`/tasks/${idtask}/complete`, {
+export const chageStatusTasks = async (idtask: number): Promise<any> => {
+    const response = await fetcher(`/tasks/${idtask}/status`, {
         method: "PUT",
     });
 

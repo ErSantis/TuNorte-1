@@ -1,12 +1,12 @@
 import { useMutation} from "@tanstack/react-query";
-import { completeTasks, deleteTask } from "../services/tasks.service";
+import { chageStatusTasks, deleteTask } from "../services/tasks.service";
 
-export const useCompleteTaskMutation = (idtask: number, refetch: (() => void)) => {
+export const useChangeStatusMutation = (idtask: number, refetch: (() => void)) => {
 
 
   return useMutation({
     mutationKey: ["completeTask", idtask],
-    mutationFn: () => completeTasks(idtask),
+    mutationFn: () => chageStatusTasks(idtask),
     onSuccess: () => {
       refetch();
     },

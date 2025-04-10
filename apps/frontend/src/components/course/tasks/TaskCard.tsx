@@ -12,18 +12,23 @@ import {
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import ReplayIcon from '@mui/icons-material/Replay';
 import { CourseTaskType } from '../../../types/course.type';
-import { useCompleteTaskMutation, useDeleteTaskMutation, useEditTaskMutation } from '../../../hooks/useTask';
+import {
+  useChangeStatusMutation,
+  useDeleteTaskMutation,
+  useEditTaskMutation
+} from '../../../hooks/useTask';
 
 interface TaskCardProps {
   task: CourseTaskType;
-  refetch?: () => void; // Optional refetch function
+  refetch?: () => void;
 }
+
 const TaskCard: React.FC<TaskCardProps> = React.memo(({ task, refetch }) => {
-  
   const { title, description, enddate, status } = task;
 
-  const { mutate: completeTask } = useCompleteTaskMutation(task.idtask, () => {
+  const { mutate: changeStatusTask } = useChangeStatusMutation(task.idtask, () => {
     refetch?.();
   });
 
@@ -31,29 +36,21 @@ const TaskCard: React.FC<TaskCardProps> = React.memo(({ task, refetch }) => {
     refetch?.();
   });
 
-  const { mutate: editTask } = useEditTaskMutation(task.idtask,  () => {
+  const { mutate: editTask } = useEditTaskMutation(task.idtask, () => {
     refetch?.();
   });
 
-  //hanldle edit task
   const handleEditTask = () => {
-    // Implement your edit task logic here
     editTask();
   };
 
-  //handle delete task
-
   const handleDeleteTask = () => {
-    // Implement your delete task logic here
     deleteTask();
   };
 
-  //handle complete task
-  const handleCompleteTask = () => {
-    // Implement your complete task logic here
-    completeTask();
+  const handleChageStatusTask = () => {
+    changeStatusTask();
   };
-
 
   return (
     <Card
@@ -62,16 +59,16 @@ const TaskCard: React.FC<TaskCardProps> = React.memo(({ task, refetch }) => {
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
-        bgcolor: status === 1 ? 'rgba(76, 175, 80, 0.08)' : 'background.paper',
-        borderLeft: status === 1 ? '4px solid #4caf50' : 'none'
+        bgcolor: status ? 'rgba(76, 175, 80, 0.08)' : 'grey.100',
+        borderLeft: status ? '4px solid #4caf50' : '4px solid #9e9e9e'
       }}
     >
       <CardHeader
         title={title}
         titleTypographyProps={{ variant: 'h6' }}
         sx={{
-          bgcolor: status === 1 ? 'rgba(76, 175, 80, 0.12)' : 'primary.light',
-          color: status === 1 ? 'text.primary' : 'primary.contrastText',
+          bgcolor: status ? 'primary.light' : 'grey.300',
+          color: status ? 'primary.contrastText' : 'text.primary',
           pb: 1
         }}
       />
@@ -83,11 +80,11 @@ const TaskCard: React.FC<TaskCardProps> = React.memo(({ task, refetch }) => {
           <Chip
             label={enddate}
             size="small"
-            color={status === 1 ? "success" : "primary"}
+            color={status ? 'primary' : 'default'}
             variant="outlined"
             sx={{ fontWeight: 'medium' }}
           />
-          {status === 1 && (
+          {!status && (
             <Chip
               label="Completada"
               size="small"
@@ -98,33 +95,45 @@ const TaskCard: React.FC<TaskCardProps> = React.memo(({ task, refetch }) => {
         </Box>
       </CardContent>
       <CardActions sx={{ p: 2, pt: 0 }}>
-        <Button
-          size="small"
-          variant="outlined"
-          color="primary"
-          startIcon={<EditIcon />}
-          onClick={() => handleEditTask()}
-        >
-          Editar
-        </Button>
-        <Button
-          size="small"
-          variant="outlined"
-          color="error"
-          startIcon={<DeleteIcon />}
-          onClick={() => handleDeleteTask()}
-        >
-          Eliminar
-        </Button>
-        {status !== 1 && (
+        {status ? (
+          <>
+            <Button
+              size="small"
+              variant="outlined"
+              color="primary"
+              startIcon={<EditIcon />}
+              onClick={handleEditTask}
+            >
+              Editar
+            </Button>
+            <Button
+              size="small"
+              variant="outlined"
+              color="error"
+              startIcon={<DeleteIcon />}
+              onClick={handleDeleteTask}
+            >
+              Eliminar
+            </Button>
+            <Button
+              size="small"
+              variant="contained"
+              color="success"
+              startIcon={<CheckCircleIcon />}
+              onClick={handleChageStatusTask}
+            >
+              Completar
+            </Button>
+          </>
+        ) : (
           <Button
             size="small"
             variant="contained"
-            color="success"
-            startIcon={<CheckCircleIcon />}
-            onClick={() => handleCompleteTask()}
+            color="primary"
+            startIcon={<ReplayIcon />}
+            onClick={handleChageStatusTask} // Aquí también puede ser una mutación "restoreTask" si tienes una aparte
           >
-            Completar
+            Restaurar
           </Button>
         )}
       </CardActions>
@@ -132,4 +141,4 @@ const TaskCard: React.FC<TaskCardProps> = React.memo(({ task, refetch }) => {
   );
 });
 
-export { TaskCard };
+export default TaskCard;
