@@ -5,8 +5,6 @@ import { PrivateRoute } from "../components/ProtectedRoute";
 import { CoursePage } from "../pages/CoursePage";
 
 
-
-
 export const router = createBrowserRouter(
   [
     {
@@ -24,7 +22,10 @@ export const router = createBrowserRouter(
     },
     {
       path: `/subjects`,
-      element: <CoursePage/>,
+      element:
+        <PrivateRoute>
+          <CoursePage />
+        </PrivateRoute>
     },
   ],
 

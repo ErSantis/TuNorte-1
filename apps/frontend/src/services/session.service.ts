@@ -3,13 +3,14 @@ import { StudentSessionType} from "../types/student";
 
 const SESSION_KEY = "auth_session";
 
-export const saveSession = (user: StudentSessionType) => {
-    const sessionData = JSON.stringify({ user });
+export const saveSession = (session: StudentSessionType) => {
+    const sessionData = JSON.stringify(session);
     localStorage.setItem(SESSION_KEY, sessionData);
 };
 
 export const getSession = () => {
     const sessionData = localStorage.getItem(SESSION_KEY);
+    console.log("Sesión recuperada:", sessionData ? JSON.parse(sessionData) : null);
     return sessionData ? JSON.parse(sessionData) : null;
 };
 

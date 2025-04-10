@@ -5,4 +5,6 @@ export interface SessionType {
   user: Omit<StudentType, "password">;
   login: (user: StudentSessionType) => void;
   logout: () => void;
+  isAuthenticated: boolean;
+  loading: boolean;
 }
