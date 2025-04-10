@@ -17,8 +17,13 @@ interface TasksSectionProps {
 }
 
 const TasksSection: React.FC<TasksSectionProps> = ({ tasks, refetch }) => {
-  const pendingTasks = tasks.filter((t) => !t.status);
-  const completedTasks = tasks.filter((t) => t.status);
+  const pendingTasks = tasks.filter((t) => t.status); // Pending tasks
+  const completedTasks = tasks.filter((t) => !t.status); // Completed tasks
+
+  // Debugging: Log tasks to verify data
+  console.log("All tasks:", tasks);
+  console.log("Pending tasks:", pendingTasks);
+  console.log("Completed tasks:", completedTasks);
 
   return (
     <Box
