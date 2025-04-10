@@ -13,10 +13,10 @@ import { TaskAccordion } from './TasksAccordion';
 
 interface TasksSectionProps {
   tasks: CourseTaskType[];
-  refecth: () => void;
+  refetch: () => void;
 }
 
-const TasksSection: React.FC<TasksSectionProps> = ({ tasks, refecth }) => {
+const TasksSection: React.FC<TasksSectionProps> = ({ tasks, refetch }) => {
   const pendingTasks = tasks.filter((t) => t.status); // Pending tasks
   const completedTasks = tasks.filter((t) => !t.status); // Completed tasks
 
@@ -60,7 +60,7 @@ const TasksSection: React.FC<TasksSectionProps> = ({ tasks, refecth }) => {
             <TaskAccordion
               tasks={pendingTasks}
               emptyMessage="No hay tareas pendientes."
-              refetch={refecth}
+              refetch={refetch}
             />
           </AccordionDetails>
         </Accordion>
@@ -84,7 +84,7 @@ const TasksSection: React.FC<TasksSectionProps> = ({ tasks, refecth }) => {
             <TaskAccordion
               tasks={completedTasks}
               emptyMessage="No hay tareas finalizadas."
-              refetch={refecth}
+              refetch={refetch}
             />
           </AccordionDetails>
         </Accordion>
