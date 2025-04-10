@@ -9,19 +9,21 @@ import { TaskCard } from './TaskCard';
 interface TaskAccordionProps {
   tasks: CourseTaskType[];
   emptyMessage: string;
+  refetch: () => void;
 }
 
 const TaskAccordion: React.FC<TaskAccordionProps> = ({
   tasks,
   emptyMessage,
+  refetch,
 }) => {
   return (
     <>
       {tasks.length > 0 ? (
         <Grid container spacing={3}>
           {tasks.map((task) => (
-            <Grid >
-              <TaskCard task={task} />
+            <Grid>
+              <TaskCard task={task} refetch={refetch} />
             </Grid>
           ))}
         </Grid>
