@@ -26,15 +26,23 @@ export const CoursePage = () => {
   if (error || !data) return <div>Error loading course data</div>; // Added check for !data
 
   console.log("Course data:", data); // Debugging log
-  
+
   return (
     <>
       <Hero name={data.info.name} />
       <main className="et-main">
-        <InformationSection info={data.info} />
-         <ScheduleSection schedules={data.schedules} />
-        <TasksSection tasks={data.tasks} />
-        <MapSection locations={data.schedules.map(schedule => schedule.location)} />
+        <section id="tab-information">
+          <InformationSection info={data.info} />
+        </section>
+        <section id="tab-schedule">
+          <ScheduleSection schedules={data.schedules} />
+        </section>
+        <section id="tab-tasks">
+          <TasksSection tasks={data.tasks} />
+        </section>
+        <section id="tab-map">
+          <MapSection locations={data.schedules.map(schedule => schedule.location)} />
+        </section>
       </main>
     </>
   );

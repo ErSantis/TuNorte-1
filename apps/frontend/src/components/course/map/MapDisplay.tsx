@@ -6,20 +6,18 @@ import { ChangeMapViewProps, MapDisplayProps } from '../../../types/map.types';
 import 'leaflet/dist/leaflet.css';
 import { getLocationName } from '../../../utils/map/getLocationName';
 
-// Define ubicación por defecto para Barranquilla, Colombia
-const BARRANQUILLA_COORDS: [number, number] = [11.01370, -74.85131];
 
 // Componente para actualizar la posición del mapa
 const ChangeMapView: React.FC<ChangeMapViewProps> = ({ coords }) => {
   const map = useMap();
-  map.setView(coords, map.getZoom());
+  map.setView(coords, 18);
   return null;
 };
 
 
 export const MapDisplay: React.FC<MapDisplayProps> = ({
-  center = BARRANQUILLA_COORDS,
-  zoom = 13,
+  center,
+  zoom,
   locations
 }) => {
   // Arreglo para iconos de Leaflet en React

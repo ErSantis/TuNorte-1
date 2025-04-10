@@ -6,6 +6,7 @@ import {
   AccordionSummary,
   AccordionDetails
 } from '@mui/material';
+import AssignmentIcon from '@mui/icons-material/Assignment';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { CourseTaskType } from '../../../types/course.type';
 import { TaskAccordion } from './TasksAccordion';
@@ -15,8 +16,8 @@ interface TasksSectionProps {
 }
 
 const TasksSection: React.FC<TasksSectionProps> = ({ tasks }) => {
-  const pendingTasks = tasks.filter((t) => t.status);
-  const completedTasks = tasks.filter((t) => !t.status);
+  const pendingTasks = tasks.filter((t) => !t.status);
+  const completedTasks = tasks.filter((t) => t.status);
 
   return (
     <Box
@@ -30,7 +31,7 @@ const TasksSection: React.FC<TasksSectionProps> = ({ tasks }) => {
       }}
     >
       <Typography variant="h4" component="h1" gutterBottom sx={{ mb: 3, fontWeight: 'bold' }}>
-        Tareas
+       <AssignmentIcon sx={{ mr: 1 }}/> Tareas
       </Typography>
 
       <Box sx={{ mt: 2 }}>
