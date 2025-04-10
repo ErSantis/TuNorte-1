@@ -5,6 +5,7 @@ import {
   Toolbar,
   Typography,
 } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 interface HeroProps {
   name: string;
@@ -18,6 +19,8 @@ const sections = [
 ];
 
 export const Hero = ({ name }: HeroProps) => {
+  const navigate = useNavigate();
+
   const handleClick = (id: string) => {
     const section = document.getElementById(id);
     if (section) {
@@ -39,10 +42,13 @@ export const Hero = ({ name }: HeroProps) => {
               {section.label}
             </Button>
           ))}
+            <Button
+            onClick={() => navigate(-1)}
+            sx={{ textTransform: 'none', color: 'red' }}
+            >
+            REGRESAR
+            </Button>
         </Box>
-        <Button href="/" sx={{ textTransform: 'none', color: 'primary.main' }}>
-          REGRESAR
-        </Button>
       </Toolbar>
     </AppBar>
   );

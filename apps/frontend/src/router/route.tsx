@@ -22,7 +22,10 @@ export const router = createBrowserRouter(
     },
     {
       path: `/subjects`,
-      element: <CoursePage/>,
+      element:
+        <PrivateRoute>
+          <CoursePage />
+        </PrivateRoute>
     },
   ],
 
