@@ -15,17 +15,13 @@ export const CoursePage = () => {
   const [searchParams] = useSearchParams();
   const nrc = searchParams.get("NRC");
 
-
   const nrcNumber = nrc ? parseInt(nrc, 10) : null;
 
-  const { data, isLoading, error } = useGetCourse(nrcNumber as number); // Assuming NRC is the course identifier
-
+  const { data, isLoading, error, refetch } = useGetCourse(nrcNumber as number); // Assuming NRC is the course identifier
 
   if (isLoading) return <div>Loading...</div>;
 
   if (error || !data) return <div>Error loading course data</div>; // Added check for !data
-
-  console.log("Course data:", data); // Debugging log
 
   return (
     <>
@@ -38,7 +34,7 @@ export const CoursePage = () => {
           <ScheduleSection schedules={data.schedules} />
         </section>
         <section id="tab-tasks">
-          <TasksSection tasks={data.tasks} />
+          <TasksSection tasks={data.tasks} refecth={refetch} />
         </section>
         <section id="tab-map">
           <MapSection locations={data.schedules.map(schedule => schedule.location)} />
