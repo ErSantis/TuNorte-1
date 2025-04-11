@@ -26,7 +26,6 @@ export const deleteTask = async (idtask: number): Promise<any> => {
 
 export const createTask = async (data: CourseNewTaskType): Promise<any> => {
     
-    console.log("Creating task withand data:", data); // Debugging line
     const response = await fetcher(`/tasks/`, {
         method: "POST",
         body: JSON.stringify(data),

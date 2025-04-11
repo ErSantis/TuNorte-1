@@ -9,10 +9,10 @@ import { useAuth } from "../context/AuthContext";
 const Login: React.FC = React.memo(() => {
 
   const navigate = useNavigate();
-  const {mutate: loginMuatation } = useLoginUser();
+  const {mutate: loginMutation } = useLoginUser();
   const {login :LoginUser} = useAuth()
   const handleLogin = (username: string, password: string) => {
-    loginMuatation(
+    loginMutation(
       { username, password },
       {
         onSuccess: (data) => {
