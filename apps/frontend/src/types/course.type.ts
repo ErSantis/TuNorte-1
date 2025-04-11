@@ -14,7 +14,11 @@ export type CourseTaskType = {
     description: string;
     enddate: string;
     status: boolean;
+    nrc: number;
+    idstudent: number;
 };
+
+export type CourseNewTaskType = Partial<CourseTaskType>
 
 export type CourseLocationType = {
     name: string;
