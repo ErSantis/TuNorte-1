@@ -32,3 +32,13 @@ export const useEditTaskMutation = (idtask: number, refetch: (() => void)) => {
     },
   });
 }
+
+export const useCreateTaskMutation = (idcourse: number, refetch: (() => void)) => {
+  return useMutation({
+    mutationKey: ["createTask", idcourse],
+    mutationFn: () => deleteTask(idcourse),
+    onSuccess: () => {
+      refetch();
+    },
+  });
+}

@@ -8,6 +8,7 @@ import { useGetCourse } from '../hooks/useGetCourse';
 import '../styles/CoursePage.css';
 
 import { useSearchParams } from 'react-router-dom';
+import { use, useEffect } from 'react';
 
 
 export const CoursePage = () => {
@@ -18,6 +19,11 @@ export const CoursePage = () => {
   const nrcNumber = nrc ? parseInt(nrc, 10) : null;
 
   const { data, isLoading, error, refetch } = useGetCourse(nrcNumber as number); // Assuming NRC is the course identifier
+ 
+  useEffect(() => {
+    console.log('changing course data', data);
+  }, [data]);
+
 
   if (isLoading) return <div>Loading...</div>;
 

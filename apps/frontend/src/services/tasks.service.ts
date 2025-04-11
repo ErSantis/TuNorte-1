@@ -22,3 +22,11 @@ export const deleteTask = async (idtask: number): Promise<any> => {
     });
     return response; // Ensure correct data extraction
 }
+
+export const createTask = async (idcourse: number, data: any): Promise<any> => {
+    const response = await fetcher(`/tasks/${idcourse}`, {
+        method: "POST",
+        body: JSON.stringify(data),
+    });
+    return response; // Ensure correct data extraction
+}

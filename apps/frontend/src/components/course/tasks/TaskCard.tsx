@@ -25,13 +25,13 @@ interface TaskCardProps {
   refetch?: () => void;
 }
 
-const TaskCard: React.FC<TaskCardProps> = React.memo(({ task, refetch }) => {
+const TaskCard: React.FC<TaskCardProps> = (({ task, refetch }) => {
   const { title, description, enddate, status } = task;
 
 
   const { mutate: changeStatusTask } = useChangeStatusMutation(task.idtask, () => {
     refetch?.();
-     // alternar el estado local
+    // alternar el estado local
   });
 
   const { mutate: deleteTask } = useDeleteTaskMutation(task.idtask, () => {

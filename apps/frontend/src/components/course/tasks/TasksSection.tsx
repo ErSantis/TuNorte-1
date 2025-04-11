@@ -18,17 +18,9 @@ interface TasksSectionProps {
 
 const TasksSection: React.FC<TasksSectionProps> = ({ tasks, refetch }) => {
   
-  useEffect(() => {
-    refetch(); // Asegúrate de que las tareas se actualicen al montar el componente
-  }, [tasks, refetch]); // Escucha cambios en las tareas
 
   const pendingTasks = tasks.filter((t) => t.status); // Pending tasks
   const completedTasks = tasks.filter((t) => !t.status); // Completed tasks
-
-  // Debugging: Log tasks to verify data
-  console.log("All tasks:", tasks);
-  console.log("Pending tasks:", pendingTasks);
-  console.log("Completed tasks:", completedTasks);
 
   return (
     <Box

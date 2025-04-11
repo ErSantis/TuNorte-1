@@ -27,8 +27,11 @@ const TaskAccordion: React.FC<TaskAccordionProps> = ({
   const handleCloseModal = () => setModalOpen(false);
 
   const handleCreateTask = (title: string, description: string, enddate: string) => {
-    // Aquí puedes implementar la lógica para crear una nueva tarea
-    // y luego llamar a refetch para actualizar la lista de tareas
+    const newTask = {
+      title,
+      description,
+      enddate,
+    };
     console.log('Nueva tarea creada:', { title, description, enddate });
     refetch();
   };
