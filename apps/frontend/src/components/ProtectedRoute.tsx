@@ -4,6 +4,7 @@ import { useAuth } from "../hooks/useAuth";
 import { ReactNode } from "react";
 
 export const PrivateRoute = ({ children }: { children: ReactNode }) => {
+    
     const { token } = useAuth();
     console.log("Token desde PrivateRoute:", token); // Verifica el valor del token
 

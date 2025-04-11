@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 interface NavbarProps {
@@ -7,9 +7,10 @@ interface NavbarProps {
 }
 
 export const Navbar = React.memo(({ user, logout }: NavbarProps) => {
-  const handleLogout = useCallback(() => {
+  
+  const handleLogout = () => {
     logout();
-  }, [logout]);
+  }
 
   return (
     <nav className="navbar navbar-expand-lg bg-light">

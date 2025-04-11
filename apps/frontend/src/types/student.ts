@@ -1,5 +1,5 @@
 export type StudentType = {
-    idstudent: string;
+    idstudent: number;
     username: string;
     password: string;
     name: string;

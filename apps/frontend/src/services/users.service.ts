@@ -7,6 +7,5 @@ export const loginUser = async (username: string, password: string): Promise<Stu
         method: "POST",
         body: JSON.stringify({ username, password }),
     });
-    console.log("loginUser response", response);
     return response;
 }

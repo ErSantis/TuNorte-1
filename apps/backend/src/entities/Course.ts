@@ -1,10 +1,16 @@
-import { Entity, JoinColumn, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
-import { Professor } from "./Professor";
-import { Subject } from "./Subjects";
-import { CoursesRegister } from "./CourseRegister";
-import { CourseProf } from "./CourseProf";
-import { Task } from "./Task";
-import { Schedule } from "./Schedule";
+import {
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryColumn,
+} from 'typeorm';
+import { Professor } from './Professor';
+import { Subject } from './Subjects';
+import { CoursesRegister } from './CourseRegister';
+import { CourseProf } from './CourseProf';
+import { Task } from './Task';
+import { Schedule } from './Schedule';
 
 @Entity()
 export class Course {
@@ -30,6 +36,4 @@ export class Course {
 
   @OneToMany(() => CourseProf, (cp) => cp.course)
   courseprofs!: CourseProf[];
-
-  
 }

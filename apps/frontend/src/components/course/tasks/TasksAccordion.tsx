@@ -1,24 +1,28 @@
 // TaskAccordion.tsx
 
 import React, { useState } from 'react';
-import { 
-  Grid, 
+import {
+  Grid,
   Typography,
   Button
 } from '@mui/material';
-import { CourseTaskType } from '../../../types/course.type';
+import { CourseNewTaskType, CourseTaskType } from '../../../types/course.type';
 import TaskCard from './TaskCard';
 import CreateTaskModal from './CreateTaskModal';
+import { useCreateTaskMutation } from '../../../hooks/useTask';
+import { useAuth } from '../../../context/AuthContext';
 
 interface TaskAccordionProps {
   tasks: CourseTaskType[];
   emptyMessage: string;
+  nrc: number;
   refetch: () => void;
 }
 
 const TaskAccordion: React.FC<TaskAccordionProps> = ({
   tasks,
   emptyMessage,
+  nrc,
   refetch,
 }) => {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -26,13 +30,21 @@ const TaskAccordion: React.FC<TaskAccordionProps> = ({
   const handleOpenModal = () => setModalOpen(true);
   const handleCloseModal = () => setModalOpen(false);
 
+  const { mutate: CreateTaskMutation } = useCreateTaskMutation(nrc ,refetch);
+  const { user } = useAuth();
+  
+  const { idstudent } = user;
+
   const handleCreateTask = (title: string, description: string, enddate: string) => {
-    const newTask = {
+    const newTask: CourseNewTaskType = {
       title,
       description,
       enddate,
+      idstudent,
+      nrc,
+      status: true, // Cambia el valor de status a true
     };
-    console.log('Nueva tarea creada:', { title, description, enddate });
+    CreateTaskMutation({ newTask }); // Convert idstudent to a number
     refetch();
   };
 

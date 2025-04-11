@@ -1,10 +1,10 @@
 import {
-    Entity,
-    Column,
-    PrimaryColumn,
-    JoinColumn,
-    ManyToOne,
-    OneToMany,
+  Entity,
+  Column,
+  PrimaryColumn,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
 } from 'typeorm';
 
 import { Department } from './Departments';
@@ -28,4 +28,3 @@ export class Subject {
   @OneToMany(() => Course, (course) => course.subject)
   courses!: Course[];
 }
-
