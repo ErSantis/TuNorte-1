@@ -6,5 +6,5 @@ export const getSubjects = async (user_id: number): Promise<SubjectType[]> => { 
         method: "GET",
     });
     
-    return response; // Ensure correct data extraction
+    return response;
 };
