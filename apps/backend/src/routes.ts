@@ -1,31 +1,12 @@
 import { Router } from 'express';
-import { loginUser } from "./controllers/user.controller";
-import { getstudentCourses } from "./controllers/subject.controller";
-import { getCourse } from "./controllers/course.controller";
-import { completeTask, createTask, deleteTask, editTask } from './controllers/task.controller';
+import authRoutes from './routes/auth.routes';
+import courseRoutes from './routes/course.routes';
+import taskRoutes from './routes/task.routes';
 
 const router = Router();
 
-router.get('/', (req, res) => {
-  res.send({ message: 'Hello API' });
-});
-
-router.post('/auth/login', loginUser);
-
-router.get('/courses/users/:idStudent', getstudentCourses);
-
-router.get('/subjects', getCourse);
-
-router.put('/tasks/:idtask/status', completeTask);
-
-//Eliminar
-router.delete('/tasks/:idtask', deleteTask);
-
-//Editar
-router.put('/tasks/:idtask', editTask);
-
-//Crear
-router.post('/tasks/', createTask);
-
+router.use('/auth', authRoutes);
+router.use('/courses', courseRoutes);
+router.use('/tasks', taskRoutes);
 
 export default router;
