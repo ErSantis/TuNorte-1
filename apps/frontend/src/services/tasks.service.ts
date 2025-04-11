@@ -1,3 +1,4 @@
+import { CourseNewTaskType } from "../types/course.type";
 import { fetcher } from "./api.service";
 
 export const chageStatusTasks = async (idtask: number): Promise<any> => {
@@ -8,7 +9,7 @@ export const chageStatusTasks = async (idtask: number): Promise<any> => {
     return response; // Ensure correct data extraction
 }
 
-export const editTask = async (idtask: number, data: any): Promise<any> => {
+export const editTask = async (idtask: number, data: CourseNewTaskType): Promise<any> => {
     const response = await fetcher(`/tasks/${idtask}`, {
         method: "PUT",
         body: JSON.stringify(data),
@@ -23,8 +24,10 @@ export const deleteTask = async (idtask: number): Promise<any> => {
     return response; // Ensure correct data extraction
 }
 
-export const createTask = async (idcourse: number, data: any): Promise<any> => {
-    const response = await fetcher(`/tasks/${idcourse}`, {
+export const createTask = async (data: CourseNewTaskType): Promise<any> => {
+    
+    console.log("Creating task withand data:", data); // Debugging line
+    const response = await fetcher(`/tasks/`, {
         method: "POST",
         body: JSON.stringify(data),
     });
