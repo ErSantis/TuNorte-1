@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import { LoginUser } from "./controllers/user.controller";
+import { loginUser } from "./controllers/user.controller";
 import { getstudentCourses } from "./controllers/subject.controller";
 import { getCourse } from "./controllers/course.controller";
-import { completeTask, deleteTask, editTask } from './controllers/task.controller';
+import { completeTask, createTask, deleteTask, editTask } from './controllers/task.controller';
 
 const router = Router();
 
@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
   res.send({ message: 'Hello API' });
 });
 
-router.post('/auth/login', LoginUser);
+router.post('/auth/login', loginUser);
 
 router.get('/courses/users/:idStudent', getstudentCourses);
 
@@ -23,6 +23,9 @@ router.delete('/tasks/:idtask', deleteTask);
 
 //Editar
 router.put('/tasks/:idtask', editTask);
+
+//Crear
+router.post('/tasks/', createTask);
 
 
 export default router;
