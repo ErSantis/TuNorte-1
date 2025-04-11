@@ -1,10 +1,16 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import { Student } from "./Students";
-import { Course } from "./Course";
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Student } from './Students';
+import { Course } from './Course';
 
 @Entity()
 export class Task {
-  @PrimaryGeneratedColumn("increment", { type: "int" })
+  @PrimaryGeneratedColumn('increment', { type: 'int' })
   idtask!: number;
 
   @Column({ type: 'varchar', length: 50 })

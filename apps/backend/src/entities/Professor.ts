@@ -1,7 +1,14 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Department } from "./Departments";
-import { Course } from "./Course";
-import { CourseProf } from "./CourseProf";
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Department } from './Departments';
+import { Course } from './Course';
+import { CourseProf } from './CourseProf';
 
 @Entity('professors')
 export class Professor {

@@ -1,6 +1,6 @@
-import { Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import { Course } from "./Course";
-import { Professor } from "./Professor";
+import { Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Course } from './Course';
+import { Professor } from './Professor';
 
 @Entity('courseprof')
 export class CourseProf {
