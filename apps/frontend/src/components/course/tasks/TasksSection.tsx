@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   Box,
   Typography,
@@ -13,10 +13,11 @@ import { TaskAccordion } from './TasksAccordion';
 
 interface TasksSectionProps {
   tasks: CourseTaskType[];
+  nrc: number;
   refetch: () => void;
 }
 
-const TasksSection: React.FC<TasksSectionProps> = ({ tasks, refetch }) => {
+const TasksSection: React.FC<TasksSectionProps> = ({ tasks, refetch, nrc }) => {
   
 
   const pendingTasks = tasks.filter((t) => t.status); // Pending tasks
@@ -58,6 +59,7 @@ const TasksSection: React.FC<TasksSectionProps> = ({ tasks, refetch }) => {
               tasks={pendingTasks}
               emptyMessage="No hay tareas pendientes."
               refetch={refetch}
+              nrc = {nrc}
             />
           </AccordionDetails>
         </Accordion>
@@ -82,6 +84,7 @@ const TasksSection: React.FC<TasksSectionProps> = ({ tasks, refetch }) => {
               tasks={completedTasks}
               emptyMessage="No hay tareas finalizadas."
               refetch={refetch}
+              nrc = {nrc}
             />
           </AccordionDetails>
         </Accordion>
