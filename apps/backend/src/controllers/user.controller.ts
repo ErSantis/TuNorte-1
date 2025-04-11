@@ -3,7 +3,7 @@ import { Request, Response } from "express";
 import { loginStudent } from "../services/user.sevice";
 
 
-export const LoginUser = async (req: Request, res: Response) => {
+export const loginUser = async (req: Request, res: Response) => {
   const { username, password }: { username: string; password: string } = req.body;
 
   if (!username || !password) {
