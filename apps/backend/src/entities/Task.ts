@@ -4,7 +4,7 @@ import { Course } from "./Course";
 
 @Entity()
 export class Task {
-  @PrimaryGeneratedColumn({ type: 'int' })
+  @PrimaryGeneratedColumn("increment", { type: "int" })
   idtask!: number;
 
   @Column({ type: 'varchar', length: 50 })

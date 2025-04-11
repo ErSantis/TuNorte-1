@@ -1,6 +1,6 @@
 import { AppDataSource } from "../db";
 import { Task } from "../entities/Task";
-
+import { Course } from "../entities/Course";
 
 export const completeTaskByid = async (taskId: number): Promise<any> => {
 
@@ -11,7 +11,7 @@ export const completeTaskByid = async (taskId: number): Promise<any> => {
         throw new Error(`Task with ID ${taskId} not found.`);
     }
 
-    task.status = !task.status; 
+    task.status = !task.status;
 
     await taskRepository.save(task);
 
@@ -43,4 +43,24 @@ export const deleteTaskById = async (taskId: number): Promise<any> => {
     await taskRepository.remove(task);
 
     return `Task with ID ${taskId} deleted.`;
+}
+
+export const createTaskByNrc = async (data: any): Promise<any> => {
+    const taskRepository = AppDataSource.getRepository(Task);
+    const courseRepository = AppDataSource.getRepository(Course);
+
+    const { nrc } = data; // Extract NRC from the data
+    const course = await courseRepository.findOne({ where: { nrc } });
+    if (!course) {
+        throw new Error(`Course with NRC ${nrc} not found.`);
+    }
+
+    const newTask = taskRepository.create({
+        ...data,
+        course,
+    });
+
+    await taskRepository.save(newTask);
+
+    return `Task created successfully with ID ${newTask}.`;
 }
