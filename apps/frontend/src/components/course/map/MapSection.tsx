@@ -73,7 +73,7 @@ export const MapSection: React.FC<MapSectionProps> = ({ locations }) => {
         elevation={3} 
         sx={{ 
           width: '80%', 
-          height: '500px',
+          height: '380px',
           overflow: 'hidden',
           mx: 'auto' // Centrar horizontalmente
         }}
