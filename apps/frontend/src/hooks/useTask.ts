@@ -1,5 +1,6 @@
-import { useMutation} from "@tanstack/react-query";
-import { chageStatusTasks, deleteTask } from "../services/tasks.service";
+import { useMutation } from "@tanstack/react-query";
+import { chageStatusTasks, createTask, deleteTask } from "../services/tasks.service";
+import { CourseNewTaskType} from "../types/course.type";
 
 export const useChangeStatusMutation = (idtask: number, refetch: (() => void)) => {
 
@@ -33,10 +34,10 @@ export const useEditTaskMutation = (idtask: number, refetch: (() => void)) => {
   });
 }
 
-export const useCreateTaskMutation = (idcourse: number, refetch: (() => void)) => {
+export const useCreateTaskMutation = (nrc: number, refetch: (() => void)) => {
   return useMutation({
-    mutationKey: ["createTask", idcourse],
-    mutationFn: () => deleteTask(idcourse),
+    mutationKey: ["createTask", nrc],
+    mutationFn: ({ newTask}: { newTask: CourseNewTaskType}) => createTask(newTask),
     onSuccess: () => {
       refetch();
     },

@@ -1,6 +1,12 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import { Course } from "./Course";
-import { Location } from "./Location";
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Course } from './Course';
+import { Location } from './Location';
 
 @Entity('schedules')
 export class Schedule {

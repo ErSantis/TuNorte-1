@@ -1,8 +1,15 @@
-import "reflect-metadata"
-import { Entity, Column, PrimaryColumn, ManyToOne, JoinColumn, OneToMany } from "typeorm";
-import { Department } from "./Departments";
-import { CoursesRegister } from "./CourseRegister";
-import { Task } from "./Task";
+import 'reflect-metadata';
+import {
+  Entity,
+  Column,
+  PrimaryColumn,
+  ManyToOne,
+  JoinColumn,
+  OneToMany,
+} from 'typeorm';
+import { Department } from './Departments';
+import { CoursesRegister } from './CourseRegister';
+import { Task } from './Task';
 
 @Entity('students')
 export class Student {
@@ -37,4 +44,3 @@ export class Student {
   @OneToMany(() => Task, (task) => task.student)
   tasks!: Task[];
 }
-

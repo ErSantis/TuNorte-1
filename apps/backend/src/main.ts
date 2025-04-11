@@ -3,7 +3,9 @@ import "reflect-metadata";
 import express from 'express';
 const cors = require("cors");
 import dotenv from 'dotenv';
-import router from './routes'; // Importar las rutas
+
+// Importar las rutas
+import router from './routes';
 
 dotenv.config();
 // Cargar variables de entorno desde el archivo .env

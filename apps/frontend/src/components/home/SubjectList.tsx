@@ -1,6 +1,6 @@
 import React from 'react';
 import { SubjectCard } from './SubjectCard';
-import { SubjectType } from '../types/subject.type';
+import { SubjectType } from '../../types/subject.type';
 
 interface SubjectListProps {
   data: SubjectType[];

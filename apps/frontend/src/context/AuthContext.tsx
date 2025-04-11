@@ -8,14 +8,17 @@ import { StudentSessionType, StudentType } from "../types/student";
 export const AuthContext = createContext<SessionType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
+
   const [token, setToken] = useState<string>("");
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [user, setUser] = useState<Omit<StudentType, "password">>({} as Omit<StudentType, "password">);
   const [loading, setLoading] = useState(true);
 
+  /* The `useEffect` hook in the provided code snippet is responsible for handling the initial loading
+  of the user session data when the `AuthProvider` component is mounted. Here's a breakdown of what
+  it does: */
   useEffect(() => {
     const session: StudentSessionType = getSession()
-    console.log("Sesión recuperada:", session);
     const storedToken = session?.token || null;
     const storedUser = session?.user || null;
     if (storedToken && storedUser) {
@@ -28,21 +31,19 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
     setLoading(false);
   }, []);
-  
+
 
 
   const login = (session: StudentSessionType) => {
-
     saveSession(session); // Save the session data to localStorage);
-    setUser(session.user);
-    setToken(session.token);
+    setUser(session.user); // Set user data
+    setToken(session.token); // Set token data
     setIsAuthenticated(true); // Set authenticated state
   };
 
   const logout = () => {
-
-    clearSession();
-    setToken('');
+    clearSession(); // Clear the session data from localStorage
+    setToken(''); // Reset token data
     setUser({} as Omit<StudentType, "password">); // Set user to an empty object of the appropriate type
     setIsAuthenticated(false); // Reset authenticated state
   };

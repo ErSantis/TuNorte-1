@@ -1,8 +1,8 @@
-import { Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
-import { Student } from "./Students";
-import { Professor } from "./Professor";
-import { Subject } from "./Subjects";
-    
+import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm';
+import { Student } from './Students';
+import { Professor } from './Professor';
+import { Subject } from './Subjects';
+
 @Entity('departments')
 export class Department {
   @PrimaryColumn({ type: 'varchar', length: 4 })

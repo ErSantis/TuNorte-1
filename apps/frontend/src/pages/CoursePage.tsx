@@ -3,12 +3,13 @@ import { InformationSection } from '../components/course/info/InformationSection
 import { ScheduleSection } from '../components/course/schedules/ScheduleSection';
 import { TasksSection } from '../components/course/tasks/TasksSection';
 import { MapSection } from '../components/course/map/MapSection';
-import { useGetCourse } from '../hooks/useGetCourse';
+import { useGetCourse } from '../hooks/useCourse';
 
 import '../styles/CoursePage.css';
 
 import { useSearchParams } from 'react-router-dom';
-import { use, useEffect } from 'react';
+import ErrorComponent from '../components/ErrorComponent';
+import Spinner from '../components/Spinner';
 
 
 export const CoursePage = () => {
@@ -18,32 +19,31 @@ export const CoursePage = () => {
 
   const nrcNumber = nrc ? parseInt(nrc, 10) : null;
 
-  const { data, isLoading, error, refetch } = useGetCourse(nrcNumber as number); // Assuming NRC is the course identifier
+  const { data, isLoading, error, refetch } = useGetCourse(nrcNumber as number);
+
+  console.log("Course data:", data); // Log the course data to check its structure
+
+  if (isLoading) return <Spinner />; // Show a loading spinner while fetching data
+
+  if (error || !data) return <ErrorComponent message={error?.message || "An unknown error occurred"} />;
+  
+  const { info, schedules, tasks } = data || {}; // Destructure data to avoid undefined errors
  
-  useEffect(() => {
-    console.log('changing course data', data);
-  }, [data]);
-
-
-  if (isLoading) return <div>Loading...</div>;
-
-  if (error || !data) return <div>Error loading course data</div>; // Added check for !data
-
   return (
     <>
-      <Hero name={data.info.name} />
+      <Hero name={info.name} />
       <main className="et-main">
         <section id="tab-information">
-          <InformationSection info={data.info} />
+          <InformationSection info={info} />
         </section>
         <section id="tab-schedule">
-          <ScheduleSection schedules={data.schedules} />
+          <ScheduleSection schedules={schedules} />
         </section>
         <section id="tab-tasks">
-          <TasksSection tasks={data.tasks} refetch={refetch} />
+          <TasksSection tasks={tasks} refetch={refetch} nrc={nrcNumber as number} />
         </section>
         <section id="tab-map">
-          <MapSection locations={data.schedules.map(schedule => schedule.location)} />
+          <MapSection locations={schedules.map(schedule => schedule.location)} />
         </section>
       </main>
     </>
