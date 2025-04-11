@@ -10,14 +10,14 @@ const Login: React.FC = React.memo(() => {
 
   const navigate = useNavigate();
   const {mutate: loginMutation } = useLoginUser();
-  const {login :LoginUser} = useAuth()
+  const {login :loginUser} = useAuth()
   const handleLogin = (username: string, password: string) => {
     loginMutation(
       { username, password },
       {
         onSuccess: (data) => {
           // Call the login function from AuthContext, save it in the context
-          LoginUser(data);
+          loginUser(data);
           // Redirect to another page on success
           navigate("/home");
         },
