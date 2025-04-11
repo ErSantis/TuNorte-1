@@ -1,90 +1,147 @@
-# TuNorte2
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+# Tu Norte 2 — Fullstack Monorepo (Nx, React, Vite, Express, TypeORM)
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is almost ready ✨.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+![Status](https://img.shields.io/badge/status-MVP-green)
+![Build](https://img.shields.io/badge/build-passing-brightgreen)
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/nx-api/js?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+**Tu Norte 2** is a student-centered academic management platform designed to improve university students' productivity and campus experience. It allows users to manage subject-specific tasks, access full course details, and navigate their campus using an interactive map.
 
-## Finish your CI setup
+---
 
-[Click here to finish setting up your workspace!](https://cloud.nx.app/connect/VMLruAdpME)
+## 📸 Screenshots
 
 
-## Generate a library
+![screenshot1](https://via.placeholder.com/800x400?text=Dashboard+View)
+![screenshot2](https://via.placeholder.com/800x400?text=Map+View)
+![screenshot3](https://via.placeholder.com/800x400?text=Task+Manager)
 
-```sh
-npx nx g @nx/js:lib packages/pkg1 --publishable --importPath=@my-org/pkg1
+---
+
+## 🧠 Features
+
+- 📚 Organize tasks by course
+- ⏰ Track deadlines and schedules
+- 🧭 Interactive campus map with classroom directions
+- 🔐 Secure login using JWT authentication
+- 🎨 Responsive and modern UI design
+
+---
+
+## 🛠 Tech Stack
+
+| Area       | Tech Stack                                                  |
+|------------|-------------------------------------------------------------|
+| Frontend   | React, Vite, Tailwind, React Router, React Query, Leaflet   |
+| Backend    | Express, TypeORM, PostgreSQL, JWT, dotenv, bcrypt           |
+| Monorepo   | Nx                                                          |
+| UI/UX      | Material Tailwind, Bootstrap, Lucide Icons, Radix UI        |
+
+---
+
+## 📁 Project Structure
+
+```
+apps/
+├── frontend/       # React frontend with Vite
+└── backend/        # Express backend with TypeORM
+
+libs/               # Shared libraries (if any)
 ```
 
-## Run tasks
+---
 
-To build the library use:
+## 🚀 Getting Started
 
-```sh
-npx nx build pkg1
+### Prerequisites
+
+- Node.js ≥ 18.x
+- npm or yarn
+- PostgreSQL running locally or in the cloud
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/tunorte.git
+cd tunorte
 ```
 
-To run any task with Nx use:
+### 2. Install dependencies
 
-```sh
-npx nx <target> <project-name>
+```bash
+npm install
 ```
 
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
+### 3. Setup environment variables
 
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+Create `.env` files in both `apps/backend/` and `apps/frontend/`.
 
-## Versioning and releasing
+#### Example `.env` for Backend (`apps/backend/.env`):
 
-To version and release the library use
-
-```
-npx nx release
-```
-
-Pass `--dry-run` to see what would happen without actually releasing the library.
-
-[Learn more about Nx release &raquo;](hhttps://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Keep TypeScript project references up to date
-
-Nx automatically updates TypeScript [project references](https://www.typescriptlang.org/docs/handbook/project-references.html) in `tsconfig.json` files to ensure they remain accurate based on your project dependencies (`import` or `require` statements). This sync is automatically done when running tasks such as `build` or `typecheck`, which require updated references to function correctly.
-
-To manually trigger the process to sync the project graph dependencies information to the TypeScript project references, run the following command:
-
-```sh
-npx nx sync
+```env
+DATABASE_URL=postgres://username:password@localhost:5432/tunorte_db
+JWT_SECRET=your_jwt_secret
+PORT=3001
 ```
 
-You can enforce that the TypeScript project references are always in the correct state when running in CI by adding a step to your CI job configuration that runs the following command:
+---
 
-```sh
-npx nx sync:check
+## 🧑‍💻 Running the App
+
+### Run both frontend and backend simultaneously
+
+```bash
+npx nx run-many --target=serve --projects=frontend,backend --parallel
 ```
 
-[Learn more about nx sync](https://nx.dev/reference/nx-commands#sync)
+### Run individually
 
+- **Frontend**: `npx nx serve frontend`
+- **Backend**: `npx nx serve backend`
 
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+### Build for production
 
-## Install Nx Console
+```bash
+npx nx build frontend
+npx nx build backend
+```
 
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
+---
 
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+## ⚙️ Useful Nx Scripts
 
-## Useful links
+| Action             | Command                              |
+|--------------------|--------------------------------------|
+| Build frontend     | `npx nx build frontend`              |
+| Build backend      | `npx nx build backend`               |
+| Start frontend     | `npx nx serve frontend`              |
+| Start backend      | `npx nx serve backend`               |
+| Lint               | `npx nx lint`                        |
+| Format code        | `npx nx format:write`                |
+| Run tests          | _*to be implemented*_                |
 
-Learn more:
+---
 
-- [Learn more about this workspace setup](https://nx.dev/nx-api/js?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+## 📦 Deployment
 
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+To deploy, build the apps and serve them via Docker, PM2, or a hosting platform:
+
+```bash
+npx nx build frontend
+npx nx build backend
+```
+
+Then deploy the contents of `dist/apps/frontend/` and `dist/apps/backend/` accordingly.
+
+---
+
+## 📄 License
+
+MIT License — see [`LICENSE`](./LICENSE)
+
+---
+
+## 👨‍💻 Authors
+
+Developed by:
+Me :)
