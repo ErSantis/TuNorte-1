@@ -13,8 +13,10 @@
     --darkGrey: #4f585e;
 }
 
-body {
-    background-image: url(../images/home.jpg);
+.homePage {
+    background-image: url('images/home.jpg');
+    background-size: cover;
+    background-position: center;
     color: var(--darkGrey);
     font-family: 'Source Sans Pro', sans-serif;
     text-rendering: optimizeLegibility;

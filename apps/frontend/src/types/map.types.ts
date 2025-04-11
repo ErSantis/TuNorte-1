@@ -6,6 +6,7 @@ export interface MapSectionProps {
 
 export interface ChangeMapViewProps {
   coords: [number, number];
+  zoom: number;
 }
 
 export interface MapDisplayProps {

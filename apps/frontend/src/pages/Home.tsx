@@ -15,11 +15,13 @@ export const Home = () => {
   if (error || !data) return <ErrorComponent message={'Error loading  subjects'} />;
 
   return (
-    <>
+    <div className="homePage">
       <Navbar user={user} logout={logout} />
-      <div className="container mt-4">
-        <SubjectList data={data} />
-      </div>
-    </>
+      <main>
+        <div className="container mt-4">
+          <SubjectList data={data} />
+        </div>
+      </main>
+    </div>
   );
 };

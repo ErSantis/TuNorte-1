@@ -9,8 +9,8 @@ import { useAuth } from "../context/AuthContext";
 const Login: React.FC = React.memo(() => {
 
   const navigate = useNavigate();
-  const {mutate: loginMutation } = useLoginUser();
-  const {login :loginUser} = useAuth()
+  const { mutate: loginMutation } = useLoginUser();
+  const { login: loginUser } = useAuth()
   const handleLogin = (username: string, password: string) => {
     loginMutation(
       { username, password },
@@ -23,6 +23,7 @@ const Login: React.FC = React.memo(() => {
         },
         onError: (error) => {
           // Set error message to display CustomAlert
+            toast.dismiss(); // Dismiss any existing toasts
             toast.error(`🚨 ${error.message}`, {
             position: "top-center",
             autoClose: 4000,
@@ -34,12 +35,15 @@ const Login: React.FC = React.memo(() => {
     );
   };
   return (
-    <div className="wrapper">
-      <div className="formContent">
-        <h2 className="active">Sign In</h2>
-        <LoginForm onSubmit={handleLogin} />
+
+    <main className="loginPage">
+      <div className="wrapper">
+        <div className="formContent">
+          <h2 className="active">Sign In</h2>
+          <LoginForm onSubmit={handleLogin} />
+        </div>
       </div>
-    </div>
+    </main>
   );
 });
 export default Login;

@@ -8,9 +8,9 @@ import { getLocationName } from '../../../utils/map/getLocationName';
 
 
 // Componente para actualizar la posición del mapa
-const ChangeMapView: React.FC<ChangeMapViewProps> = ({ coords }) => {
+const ChangeMapView: React.FC<ChangeMapViewProps> = ({ coords, zoom }) => {
   const map = useMap();
-  map.setView(coords, 18);
+  map.setView(coords, zoom);
   return null;
 };
 
@@ -53,7 +53,7 @@ export const MapDisplay: React.FC<MapDisplayProps> = ({
           {getLocationName(locations,center[0], center[1])}
         </Popup>
       </Marker>
-      <ChangeMapView coords={center} />
+      <ChangeMapView coords={center} zoom={zoom} />
     </MapContainer>
   );
 };
