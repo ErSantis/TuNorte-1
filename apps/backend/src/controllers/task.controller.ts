@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
-import { completeTaskByid, deleteTaskById, editTaskById } from "../services/task.service";
-
+import { completeTaskByid, createTaskByNrc, deleteTaskById, editTaskById } from "../services/task.service";
 
 export const completeTask = async (req: Request, res: Response) => {
 
@@ -44,5 +43,19 @@ export const deleteTask = async (req: Request, res: Response) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Error deleting task' });
+    }
+}
+
+
+export const createTask = async (req: Request, res: Response) => {
+
+    const data = req.body;
+
+    try {
+        const result = await createTaskByNrc(data);
+        res.status(201).json(result);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Error creating task' });
     }
 }
