@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { getCourseDetail } from "../services/course.service";
 
 export const getCourse = async (req: Request, res: Response) => {
-  console.log("Obteniendo detalle del curso");
+  
   const { nrc } = req.query;
 
   try {
