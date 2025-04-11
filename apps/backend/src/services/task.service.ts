@@ -62,5 +62,6 @@ export const createTaskByNrc = async (data: any): Promise<any> => {
 
     await taskRepository.save(newTask);
 
-    return `Task created successfully with ID ${newTask}.`;
+    return `Task created.`;
+
 }
