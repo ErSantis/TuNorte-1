@@ -11,11 +11,14 @@
 
 ## 📸 Screenshots
 
+### Login Page
+![Login Page](assets/LoginPage.png)
 
-![screenshot1](https://via.placeholder.com/800x400?text=Dashboard+View)
-![screenshot2](https://via.placeholder.com/800x400?text=Map+View)
-![screenshot3](https://via.placeholder.com/800x400?text=Task+Manager)
+### Main Page
+![Main Page](assets/MainPage.png)
 
+### Course Page
+![Course Page](assets/CoursePage.png)
 ---
 
 ## 🧠 Features
@@ -48,6 +51,15 @@ apps/
 
 libs/               # Shared libraries (if any)
 ```
+---
+
+## 🗃️ Database Schema
+
+Below is the entity-relationship diagram (ERD) of the application's database:
+
+![ERD DB](assets/ERD.png)
+
+This diagram illustrates the relationships between main entities such as Users, Courses, Tasks, and Locations.
 
 ---
 
