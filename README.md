@@ -96,6 +96,27 @@ JWT_SECRET=your_jwt_secret
 PORT=3001
 ```
 
+if you dont have a PostgreSQL database running, you can do the following.
+
+ 
+#### 🐳Using Docker for PostgreSQL
+
+To run the app with a preconfigured PostgreSQL database for testing, you can use Docker. Make sure you have Docker installed and running.
+
+in the file `docker-compose.yml` you can find the configuration for the PostgreSQL database.You can change the database name, user, and password as needed.
+
+A seed file is configured to populate the database with some initial data. You can find it in the `./db` directory.
+
+
+
+```bash
+docker compose up -d
+```
+
+This will start a PostgreSQL container with the database. You can then connect to this database using your preferred PostgreSQL client.
+
+Make sure to update your `.env` file accordingly with the parameters you set in the `docker-compose.yml` file.
+
 ---
 
 ## 🧑‍💻 Running the App
